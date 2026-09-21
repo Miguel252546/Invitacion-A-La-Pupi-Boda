@@ -69,13 +69,21 @@ body::after {
 }
 
 .section {
-    padding: 100px 0;
+    padding: 60px 0;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.section:has(+ .section-divider) {
+    padding-bottom: 10px;
+}
+
+.section.countdown:has(+ .section-divider) {
+    padding-bottom: 60px;
 }
 
 .section-divider + .section {
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 .section-title {
@@ -84,7 +92,7 @@ body::after {
     font-weight: 500;
     color: var(--navy);
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     letter-spacing: 0.02em;
     position: relative;
     z-index: 2;
@@ -774,12 +782,11 @@ body::after {
  ================================ */
 .countdown {
     text-align: center;
-    padding: 60px 20px;
-    overflow: hidden; /* evita scroll horizontal en viewports chicos */
+    padding: 10px 20px 60px 20px;
 }
 
 .countdown .section-title {
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 }
 
 .countdown-particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -799,21 +806,20 @@ body::after {
 
 .count-box {
     position: relative;
-    background: rgba(255, 244, 214, 0.10);
+    background: rgba(255, 244, 214, 0.25);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(212, 166, 77, 0.3);
     border-radius: 16px;
     width: 140px;
     min-width: 140px;
     max-width: 140px;
-    height: 150px;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 25px 15px;
     box-sizing: border-box;
-    overflow: hidden;
     transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
     gap: 8px;
     flex-shrink: 0; /* no se comprime en flex-wrap */
@@ -860,7 +866,7 @@ body::after {
     align-items: center;
     justify-content: center;
     align-self: center; /* ignora el stretch del grid */
-    height: 150px; /* misma altura que .count-box */
+    min-height: 150px; /* misma altura que .count-box */
     flex-shrink: 0;
 }
 
@@ -872,7 +878,7 @@ body::after {
         width: 110px;
         min-width: 110px;
         max-width: 110px;
-        height: 130px;
+        min-height: 130px;
         padding: 18px 10px;
     }
     .count-num {
@@ -883,7 +889,7 @@ body::after {
     }
     .count-sep {
         font-size: 1.8rem;
-        height: 130px;
+        min-height: 130px;
     }
 }
 
@@ -895,7 +901,7 @@ body::after {
         width: 72px;
         min-width: 72px;
         max-width: 72px;
-        height: 95px;
+        min-height: 95px;
         padding: 12px 4px;
     }
     .count-num {
@@ -907,7 +913,7 @@ body::after {
     }
     .count-sep {
         font-size: 1.3rem;
-        height: 95px;
+        min-height: 95px;
     }
 }
 
@@ -919,7 +925,7 @@ body::after {
         width: 64px;
         min-width: 64px;
         max-width: 64px;
-        height: 88px;
+        min-height: 88px;
         padding: 10px 3px;
     }
     .count-num {
@@ -931,7 +937,7 @@ body::after {
     }
     .count-sep {
         font-size: 1.1rem;
-        height: 88px;
+        min-height: 88px;
     }
 }
 
@@ -943,7 +949,7 @@ body::after {
         width: 56px;
         min-width: 56px;
         max-width: 56px;
-        height: 82px;
+        min-height: 82px;
         padding: 8px 2px;
     }
     .count-num {
@@ -955,7 +961,7 @@ body::after {
     }
     .count-sep {
         font-size: 1rem;
-        height: 82px;
+        min-height: 82px;
     }
 }
 
@@ -1155,6 +1161,7 @@ body::after {
 /* ---------- Video Section ---------- */
 .video {
     position: relative;
+    padding-bottom: 60px;
 }
 
 .video .container {
@@ -1165,22 +1172,21 @@ body::after {
 .video .section-title {
     color: #fff;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(135, 206, 235, 0.25);
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     font-size: clamp(2rem, 4.5vw, 2.8rem);
     font-weight: 600;
     letter-spacing: 0.04em;
 }
 
 .video-wrapper {
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
-    border-radius: var(--radius-md);
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     position: relative;
-    padding-bottom: 56.25%;
-    /* 16:9 */
-    height: 0;
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 .video-wrapper video,
@@ -1535,7 +1541,8 @@ body::after {
 /* ---------- Detalles Section ---------- */
 .detalles {
     position: relative;
-    padding: 80px 0;
+    padding-top: 40px;
+    padding-bottom: 80px;
 }
 
 .section-background {
@@ -1751,7 +1758,8 @@ body::after {
  =============================== */
 .vestimenta {
     position: relative;
-    padding: 80px 0;
+    padding-top: 40px;
+    padding-bottom: 80px;
 }
 
 .vestimenta::before {
@@ -4301,8 +4309,8 @@ body::after {
 .section-divider {
     position: relative;
     width: 100%;
-    height: 60px;
-    overflow: hidden;
+    height: 40px;
+    overflow: visible;
     pointer-events: none;
     z-index: 1;
 
@@ -4458,7 +4466,7 @@ body::after {
 
 /* ══ Group 2 — Medium fill stars (35) — moderate glow ══ */
 .section-divider::after {
-    content: '';
+    content: none !important;
     position: absolute;
     inset: 0;
     background-image:
@@ -4582,11 +4590,11 @@ body::after {
 /* ══ Responsive ══ */
 
 @media (max-width: 768px) {
-    .section-divider { height: 45px; }
+    .section-divider { height: 30px; }
 }
 
 @media (max-width: 480px) {
-    .section-divider { height: 35px; }
+    .section-divider { height: 20px; }
 }
 
 /* ================================
